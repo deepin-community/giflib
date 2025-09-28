@@ -1,3 +1,88 @@
+giflib (5.2.2-1) unstable; urgency=medium
+
+  [ Debian Janitor]
+  * Update standards version to 4.6.1, no changes needed.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright).
+  * Use secure URI in Homepage field.
+
+  [ Andreas Metzler ]
+  * debian/patches:
+    + Drop patches applied upstream (fix-get-args-segment-violation.patch
+      fix-spelling-errors-on-doc-pages.patch recover-giffilter-docs.patch
+      add-gifsponge-docs.patch)
+    + Drop superseded patch (install-only-distributed-binaries-manuals.patch).
+    + Unfuzzz patches
+    + Features fixes for CVE-2023-48161, CVE-2022-28506.
+  * Cherry-pick Correct-document-page-install.patch to install manpages
+    instead of xml source.
+  * Install giflib.7 manpage.
+  * Update symbol file (added DGifDecreaseImageCounter@Base).
+  * Cherry-pick Clean-up-memory-better-at-end-of-run-CVE-2021-40633.patch to
+    fix CVE-2021-40633.
+  * Add lintian overrides for html files built from xml (source-is-missing).
+
+  [ David Suárez ]
+  * New upstream version;
+      Closes: #1024988, #988151, #1014586, #1045040, 1049653
+  * Update email to debian domain.
+  * Wrap and sort.
+  * Add 'dont-build-html-pages-images' patch.
+  * Acknowledges NMU's uploads.
+  * Add 'salsa-ci.yml'.
+
+ -- David Suárez <deiv@debian.org>  Sun, 25 Feb 2024 17:44:51 +0000
+
+giflib (5.2.1-2.5) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * Move declaration of GifQuantizeBuffer() back to gif_lib.h
+    (Closes: #1011705)
+
+ -- Graham Inggs <ginggs@debian.org>  Sun, 12 Jun 2022 16:32:15 +0000
+
+giflib (5.2.1-2.4) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Upload to unstable.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 27 Apr 2022 20:17:29 +0200
+
+giflib (5.2.1-2.3) experimental; urgency=medium
+
+  * Non-maintainer upload.
+  * Merge experimental git branch into master
+  * tests: do not spoil test result files with stderr
+
+ -- Vasyl Gello <vasek.gello@gmail.com>  Fri, 22 Apr 2022 04:06:59 +0000
+
+giflib (5.2.1-2.2) experimental; urgency=medium
+
+  * Non-maintainer upload.
+  * Add patch from Fedora (giflib_quantize.patch) to reinstate
+    GifQuantizeBuffer into giflib.so.  Closes: #935088
+  * Re-add the symbols in libgif7.symbols.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Thu, 14 Apr 2022 16:06:15 +0200
+
+giflib (5.1.9-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Ship pkg-config information.
+  * Mark libgif-dev as Multi-Arch:same.  (Closes: #998128)
+  * Bump standards version to 4.6.0, no changes required.
+
+ -- Vasyl Gello <vasek.gello@gmail.com>  Thu, 14 Apr 2022 15:59:53 +0200
+
+giflib (5.2.1-2.1) experimental; urgency=medium
+
+  * Non-maintainer upload.
+  * Set Maintainer to David Suárez <david.sephirot@gmail.com>, to match
+    unstable and fix a QA check that is warning about orphaned package but
+    missing O bug.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 07 Jun 2021 14:41:34 +0200
+
 giflib (5.1.9-2) unstable; urgency=medium
 
   * New Debian version.
@@ -70,6 +155,77 @@ giflib (5.1.9-1) unstable; urgency=medium
   * Drop libgif7.shlibs; not needed.
 
  -- David Suárez <david.sephirot@gmail.com>  Sun, 08 Dec 2019 21:18:23 +0100
+
+giflib (5.2.1-2) experimental; urgency=low
+
+  * QA upload.
+  * Run "wrap-and-sort --max-line-length=72 --short-indent"; also wrap package
+    descriptions.
+  * Pass -c4 to dpkg-gensymbols.
+
+ -- Andreas Metzler <ametzler@debian.org>  Sun, 25 Aug 2019 18:13:08 +0200
+
+giflib (5.2.1-1) experimental; urgency=low
+
+  * QA upload.
+  * New upstream version.
+    + Drop 03-spelling_fixes.patch and 40_fixtestsuite.diff.
+    + Unfuzz and extend (for libutil addition)
+      30_link_utils_dynamically.diff.
+    + Do not ship gif standards in txt format with giflib-tools.
+    + Update symbol file. Symbols which were only accidentally exported were
+      removed. For consumption by giflib-tools a small (static) helper library
+      (libutil) still provides the symbols.
+    + Pass CC=$(CC) to dh_auto_build
+
+ -- Andreas Metzler <ametzler@debian.org>  Sun, 18 Aug 2019 14:32:47 +0200
+
+giflib (5.1.8-1) experimental; urgency=low
+
+  * QA upload.
+  * New upstream version:
+    + Drop 20_giflib_soname.patch and 25_giflib_mandir.patch.
+    + Unfuzz 30_link_utils_dynamically.diff.
+    + Fixes CVE-2019-15133 - SF bug #119: MemorySanitizer: FPE on unknown
+      address
+  * 40_fixtestsuite.diff: Do not use temporary files in /tmp with a predefined
+    name in testsuite. This also fixes a testsuite error with parallel builds.
+  * debian/rules: Remove prebuilt manpages before build instead of before
+    install.
+
+ -- Andreas Metzler <ametzler@debian.org>  Sun, 17 Mar 2019 19:08:37 +0100
+
+giflib (5.1.7-1) experimental; urgency=low
+
+  * QA upload.
+
+  [ Ondřej Nový ]
+  * d/watch: Use https protocol
+
+  [ Andreas Metzler ]
+  * New upstream version:
+    + Refresh 03-spelling_fixes.patch.
+    + Drop CVE-2016-3977.patch, included upstream.
+    + AUTHORS file not shipped anymore, update debian/*.docs.
+    + Uses straight make instead of autotools, adapt debian/rules accordingly.
+    + 20_giflib_soname.patch from Fedora: Set soname on built library.
+    + Update symbol file.
+    + Fixes heap-based buffer overflow in DGifDecompressLine function.
+      CVE-2018-11490 sf#113 Closes: #904114
+    + Update debian/copyright, add Format specifier.
+  * [lintian] Add Build-Depends-Package info to symbol file.
+  * Use dh 12 compat level.
+  * Add 25_giflib_mandir.patch to fix the manpage install path and ship the
+    installed manpages.
+  * Set Rules-Requires-Root: no.
+  * 30_link_utils_dynamically.diff: Link giflib-tools dynamically instead of
+    statically against giflib.
+  * Delete debian/libgif7.shlibs (Unused, we have a symbol file) and
+    debian/giflib-dbg.docs.
+  * debian/copyright: More maintainer history/copyright, assuming NMUs did not
+    feature big copyrightable changes.
+
+ -- Andreas Metzler <ametzler@debian.org>  Sun, 17 Mar 2019 13:40:22 +0100
 
 giflib (5.1.4-3) unstable; urgency=medium
 
