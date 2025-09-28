@@ -1,3 +1,9 @@
+giflib (5.2.2-1deepin1) unstable; urgency=medium
+
+  * Fix CVE-2025-31344
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Sun, 28 Sep 2025 16:33:36 +0800
+
 giflib (5.2.2-1) unstable; urgency=medium
 
   [ Debian Janitor]

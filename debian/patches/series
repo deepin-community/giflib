@@ -5,3 +5,4 @@ revert-GifQuantizeBuffer-remove-from-lib.patch
 dont-spoil-tests-with-stderr.patch
 giflib_quantize-header.patch
 Clean-up-memory-better-at-end-of-run-CVE-2021-40633.patch
+0008-Fix-CVE-2025-31344.patch
