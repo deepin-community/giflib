@@ -1,6 +1,7 @@
 libgif.so.7 libgif7 #MINVER#
 * Build-Depends-Package: libgif-dev
  DGifCloseFile@Base 5.1
+ DGifDecreaseImageCounter@Base 5.2.2
  DGifExtensionToGCB@Base 5.1
  DGifGetCode@Base 5.1
  DGifGetCodeNext@Base 5.1

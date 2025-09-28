@@ -6,7 +6,9 @@ Description: Revert the remove of GifQuantizeBuffer symbol from the main lib.
  need to links against it.
 Author: David Suárez <david.sephirot@gmail.com>
 Origin: vendor
-Last-Update: 2019-12-07
+Last-Update: 2024-03-24
+Bug: https://sourceforge.net/p/giflib/bugs/142/
+Bug-Debian: https://bugs.debian.org/935088
 
 --- a/Makefile
 +++ b/Makefile
