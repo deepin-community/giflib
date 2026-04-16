@@ -1,3 +1,10 @@
+giflib (5.1.9-2deepin1) unstable; urgency=medium
+
+  * Fix CVE-2026-23868: double-free in GifMakeSavedImage
+  * Fix CVE-2026-26740: buffer overflow in EGifGCBToExtension
+
+ -- deepin-ci-robot <packages@deepin.org>  Fri, 17 Apr 2026 05:15:00 +0800
+
 giflib (5.1.9-2) unstable; urgency=medium
 
   * New Debian version.

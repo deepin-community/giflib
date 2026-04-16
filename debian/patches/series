@@ -4,3 +4,5 @@ revert-GifQuantizeBuffer-remove-from-lib.patch
 fix-spelling-errors-on-doc-pages.patch
 recover-giffilter-docs.patch
 add-gifsponge-docs.patch
+0009-Fix-CVE-2026-23868.patch
+0010-Fix-CVE-2026-26740.patch
